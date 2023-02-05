@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Video Shorts</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="designed_by">Designed by Pham Xuan Truong</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="watch">Watch</string>
+    <string name="library">Library</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="space">-</string>
+    <string name="views">4000 views</string>
+    <string name="author_name">Peter Jackson</string>
+    <string name="video_name">The Lord Of The Rings</string>
+    <string name="video_time">4:20</string>
+    <string name="time_start">00:00</string>
+    <string name="space_2">/</string>
+    <string name="time_end">4:40</string>
+    <string name="search">Search</string>
+    <string name="enter_video_name">Enter video name</string>
+    <string name="history_watch">History watch</string>
+    <string name="separate">/</string>
+</resources>
