@@ -30,7 +30,6 @@ public class LogInActivity extends AppCompatActivity {
             finish();
         } catch (ApiException e) {
             Toast.makeText(LogInActivity.this, "Login error", Toast.LENGTH_SHORT).show();
-            Log.e("Hello", String.valueOf(e.getStatusCode()));
         }
     });
 

@@ -9,6 +9,7 @@
     <string name="title_notifications">Notifications</string>
     <string name="watch">Watch</string>
     <string name="library">Library</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="space">-</string>
@@ -21,6 +22,7 @@
     <string name="time_end">4:40</string>
     <string name="search">Search</string>
     <string name="enter_video_name">Enter video name</string>
-    <string name="history_watch">History watch</string>
+    <string name="history_watch">History watched</string>
     <string name="separate">/</string>
+    <string name="notify_remove_success">Delete successfully</string>
 </resources>

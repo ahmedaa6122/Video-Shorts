@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "785779343855",
+    "firebase_url": "https://video-shorts-a2c1c-default-rtdb.firebaseio.com",
     "project_id": "video-shorts-a2c1c",
     "storage_bucket": "video-shorts-a2c1c.appspot.com"
   },
@@ -14,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "785779343855-6erau8eb8prspa02a23dkjukg9iseph4.apps.googleusercontent.com",
+          "client_id": "785779343855-un854ous6sjn7vfrtrsjtlig7saf4jbu.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.videoshorts",
-            "certificate_hash": "359f92b08243b230a5dd9b9acde4a08a05f145ad"
+            "certificate_hash": "f339b672be54412e3a761a727a12b2b42597e125"
           }
         },
         {

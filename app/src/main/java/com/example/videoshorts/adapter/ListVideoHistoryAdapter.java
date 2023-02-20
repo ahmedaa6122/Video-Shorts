@@ -62,6 +62,11 @@ public class ListVideoHistoryAdapter extends RecyclerView.Adapter<ListVideoHisto
         return arrayListWatched.size();
     }
 
+    public void removeItem(int position) {
+        arrayListWatched.remove(position);
+        notifyItemRemoved(position);
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView videoName;
         private final TextView channelName;
