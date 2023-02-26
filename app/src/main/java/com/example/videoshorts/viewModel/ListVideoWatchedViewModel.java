@@ -45,7 +45,7 @@ public class ListVideoWatchedViewModel extends ViewModel {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(context, "Load history watch error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Load history watched error", Toast.LENGTH_SHORT).show();
             }
         });
     }

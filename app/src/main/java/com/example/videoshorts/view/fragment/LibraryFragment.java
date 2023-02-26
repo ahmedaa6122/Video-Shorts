@@ -69,7 +69,7 @@ public class LibraryFragment extends Fragment {
         final Observer<VideoWatch> observer = videoWatch -> binding.rvListHistory.setAdapter(listVideoHistoryAdapter);
         listVideoWatchedViewModel.getVideo().observe(requireActivity(), observer);
 
-        //delete a video in history
+        //delete a video in history watched
         deleteAVideo();
 
         return binding.getRoot();

@@ -16,13 +16,15 @@ import com.bumptech.glide.Glide;
 import com.example.videoshorts.R;
 import com.example.videoshorts.model.VideoWatch;
 import com.example.videoshorts.view.activity.DetailVideoActivity;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
 public class ListVideoHistoryAdapter extends RecyclerView.Adapter<ListVideoHistoryAdapter.ViewHolder> {
     private final List<VideoWatch> arrayListWatched;
     private final Context context, getActivity;
-
+    private final FirebaseDatabase database = FirebaseDatabase.getInstance();
     public ListVideoHistoryAdapter(List<VideoWatch> arrayListWatched, Context context, Context getActivity) {
         this.arrayListWatched = arrayListWatched;
         this.context = context;
@@ -63,6 +65,12 @@ public class ListVideoHistoryAdapter extends RecyclerView.Adapter<ListVideoHisto
     }
 
     public void removeItem(int position) {
+
+        // delete video on realtime database
+        DatabaseReference myRef = database.getReference(String.valueOf(arrayListWatched.get(position).getIdVideo()));
+        myRef.removeValue();
+
+        // delete video on recyclerview
         arrayListWatched.remove(position);
         notifyItemRemoved(position);
     }
