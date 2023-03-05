@@ -1,6 +1,12 @@
 package com.example.videoshorts.view.fragment;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -89,6 +95,24 @@ public class LibraryFragment extends Fragment {
                     listVideoHistoryAdapter.removeItem(position);
                     ToastUtils.showShort(getString(R.string.notify_remove_success));
                 }
+            }
+
+            @Override
+            public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+                if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
+                    Paint p = new Paint();
+                    View itemView = viewHolder.itemView;
+                    float height = itemView.getBottom() - itemView.getTop();
+                    float width = height / 3;
+                    p.setColor(Color.RED);
+                    RectF background = new RectF(itemView.getRight() + dX, itemView.getTop(), itemView.getRight(), itemView.getBottom());
+                    c.drawRect(background, p);
+                    Bitmap icon = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.ic_delete);
+                    float margin = (dX / 4 - width) / 2;
+                    RectF iconDest = new RectF(itemView.getRight() + margin, itemView.getTop() + width, itemView.getRight() + (margin + width), itemView.getBottom() - width);
+                    c.drawBitmap(icon, null, iconDest, p);
+                }
+                super.onChildDraw(c, recyclerView, viewHolder, dX / 4, dY, actionState, isCurrentlyActive);
             }
         };
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
