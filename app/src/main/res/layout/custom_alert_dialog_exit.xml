@@ -12,6 +12,7 @@
         android:layout_marginTop="15dp"
         android:fontFamily="@font/font_text"
         android:text="@string/confirm_logout"
+        android:textColor="@color/black"
         android:textSize="20sp" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -23,9 +24,11 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:text="@string/content"
+        android:textColor="@color/black"
         android:textSize="18sp" />
 
     <RelativeLayout
+        android:id="@+id/rl_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/content"
@@ -57,5 +60,4 @@
             android:textColor="@color/white"
             android:textStyle="bold" />
     </RelativeLayout>
-
 </RelativeLayout>

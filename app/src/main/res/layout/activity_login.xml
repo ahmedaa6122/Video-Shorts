@@ -4,7 +4,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#D80A0A0A">
 
         <ImageView
             android:id="@+id/iv_google"
@@ -24,10 +25,10 @@
             android:fontFamily="@font/font_text"
             android:gravity="center_horizontal"
             android:text="@string/sign_in"
-            android:textColor="#F62B2A2A"
+            android:textColor="@color/white"
             android:textSize="35sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_signIn"
             android:layout_width="330dp"
             android:layout_height="wrap_content"
@@ -52,6 +53,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="10dp"
             android:gravity="center"
+            android:textColor="@color/white"
             android:text="@string/designed_by"
             android:textStyle="italic" />
 
