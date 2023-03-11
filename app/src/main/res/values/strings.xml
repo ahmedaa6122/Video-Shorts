@@ -25,4 +25,8 @@
     <string name="history_watch">History watched</string>
     <string name="separate">/</string>
     <string name="notify_remove_success">Delete successfully</string>
+    <string name="confirm_logout">Confirm logout</string>
+    <string name="content">Are you sure you want to log out?</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
 </resources>

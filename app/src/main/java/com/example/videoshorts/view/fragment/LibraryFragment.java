@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
@@ -32,6 +33,8 @@ import com.example.videoshorts.view.activity.LogInActivity;
 import com.example.videoshorts.viewModel.ListVideoWatchedViewModel;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LibraryFragment extends Fragment {
@@ -122,18 +125,30 @@ public class LibraryFragment extends Fragment {
     //handle event when logout
     private void Logout() {
         binding.imgLogOut.setOnClickListener(v -> {
+
             AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
-            builder.setTitle("Confirm logout")
-                    .setMessage("Are you sure you want to log out?")
-                    .setPositiveButton("Yes", (dialog, which) -> {
-                        FirebaseAuth.getInstance().signOut();
-                        Intent intent = new Intent(requireActivity(), LogInActivity.class);
-                        startActivity(intent);
-                        requireActivity().finish();
-                    }).setNegativeButton("No", (dialog, which) -> {
-                    });
+            View inflater = requireActivity().getLayoutInflater().inflate(R.layout.custom_alert_dialog_exit, null);
+            builder.setView(inflater);
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
+
+            // handle event click button cancel
+            Button btnCancel = inflater.findViewById(R.id.btnCancel);
+            btnCancel.setOnClickListener(view -> alertDialog.dismiss());
+
+            // handle event click button ok
+            Button btnOk = inflater.findViewById(R.id.btnOk);
+            btnOk.setOnClickListener(view -> {
+                GoogleSignInOptions gso = new GoogleSignInOptions
+                        .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .build();
+                GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso);
+                googleSignInClient.signOut();
+
+                Intent intent = new Intent(requireActivity(), LogInActivity.class);
+                startActivity(intent);
+                requireActivity().finish();
+            });
         });
     }
 }
