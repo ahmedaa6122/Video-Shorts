@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
@@ -33,11 +34,13 @@
                 tools:ignore="RtlSymmetry" />
 
             <ImageView
+                android:id="@+id/ivSearchOrDelete"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="5dp"
+                android:clickable="false"
                 android:src="@drawable/ic_search_video"
                 tools:ignore="ContentDescription" />
         </RelativeLayout>
@@ -69,7 +72,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:nestedScrollingEnabled="false"
-                    android:scrollbars="vertical" />
+                    android:scrollbars="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
                 <ProgressBar
                     android:id="@+id/idPBLoadingSearch"

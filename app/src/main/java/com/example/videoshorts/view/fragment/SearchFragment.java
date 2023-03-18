@@ -7,7 +7,6 @@ import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,6 +16,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Toast;
 
+import com.example.videoshorts.R;
 import com.example.videoshorts.adapter.ListVideoSearchAdapter;
 import com.example.videoshorts.databinding.FragmentSearchBinding;
 import com.example.videoshorts.model.Video;
@@ -43,7 +43,6 @@ public class SearchFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentSearchBinding.inflate(inflater, container, false);
         listVideoSearchViewModel = new ViewModelProvider(requireActivity()).get(ListVideoSearchViewModel.class);
-        binding.rvListSearch.setLayoutManager(new LinearLayoutManager(getContext()));
         searchVideo();
         searchVideoWhenEnterEditText();
         return binding.getRoot();
@@ -73,7 +72,14 @@ public class SearchFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                binding.ivSearchOrDelete.setImageResource(R.drawable.ic_delete_text);
+                binding.ivSearchOrDelete.setClickable(true);
+                binding.ivSearchOrDelete.setOnClickListener(view -> {
+                    binding.edtSearch.setText("");
+                    binding.ivSearchOrDelete.setClickable(false);
+                    binding.ivSearchOrDelete.setImageResource(R.drawable.ic_search_video);
+                    currentPage = 0;
+                });
             }
         });
     }
