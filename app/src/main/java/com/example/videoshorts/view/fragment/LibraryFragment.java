@@ -1,6 +1,5 @@
 package com.example.videoshorts.view.fragment;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -10,7 +9,6 @@ import android.graphics.RectF;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -21,27 +19,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.bumptech.glide.Glide;
 import com.example.videoshorts.R;
 import com.example.videoshorts.adapter.ListVideoHistoryAdapter;
 import com.example.videoshorts.databinding.FragmentLibraryBinding;
+import com.example.videoshorts.dialog.DialogLogOutFragment;
 import com.example.videoshorts.model.VideoWatch;
-import com.example.videoshorts.view.activity.LogInActivity;
+import com.example.videoshorts.view.activity.MainActivity;
 import com.example.videoshorts.viewModel.ListVideoWatchedViewModel;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class LibraryFragment extends Fragment {
 
     private FragmentLibraryBinding binding;
     private ListVideoHistoryAdapter listVideoHistoryAdapter;
-
     public LibraryFragment() {
     }
 
@@ -124,31 +118,6 @@ public class LibraryFragment extends Fragment {
 
     //handle event when logout
     private void Logout() {
-        binding.imgLogOut.setOnClickListener(v -> {
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
-            View inflater = requireActivity().getLayoutInflater().inflate(R.layout.custom_alert_dialog_exit, null);
-            builder.setView(inflater);
-            AlertDialog alertDialog = builder.create();
-            alertDialog.show();
-
-            // handle event click button cancel
-            Button btnCancel = inflater.findViewById(R.id.btnCancel);
-            btnCancel.setOnClickListener(view -> alertDialog.dismiss());
-
-            // handle event click button ok
-            Button btnOk = inflater.findViewById(R.id.btnOk);
-            btnOk.setOnClickListener(view -> {
-                GoogleSignInOptions gso = new GoogleSignInOptions
-                        .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                        .build();
-                GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso);
-                googleSignInClient.signOut();
-
-                Intent intent = new Intent(requireActivity(), LogInActivity.class);
-                startActivity(intent);
-                requireActivity().finish();
-            });
-        });
+        binding.imgLogOut.setOnClickListener(v -> new DialogLogOutFragment((MainActivity) requireActivity()).show(getChildFragmentManager(), null));
     }
 }

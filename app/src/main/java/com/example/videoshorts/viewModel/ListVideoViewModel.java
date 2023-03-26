@@ -1,6 +1,5 @@
 package com.example.videoshorts.viewModel;
 
-
 import android.content.Context;
 import android.widget.Toast;
 
@@ -23,15 +22,12 @@ import retrofit2.Response;
 public class ListVideoViewModel extends ViewModel {
     private final MutableLiveData<List<Video>> listVideos = new MutableLiveData<>();
     private final ArrayList<Video> videoArrayList = new ArrayList<>();
-
     public MutableLiveData<List<Video>> getListVideos() {
         return listVideos;
     }
-
     public ArrayList<Video> getVideoArrayList() {
         return videoArrayList;
     }
-
     public void getApi(int page, Context context) {
         ApiVideo.API_VIDEO.getDataVideo("0969633777", 123, 123, page, 10, "13asd")
                 .enqueue(new Callback<ListVideo>() {

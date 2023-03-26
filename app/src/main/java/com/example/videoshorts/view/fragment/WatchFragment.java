@@ -25,7 +25,6 @@ public class WatchFragment extends Fragment {
     private ListVideoViewModel listVideoViewModel;
     private FragmentWatchBinding binding;
     private int currentPage = 0;
-
     public WatchFragment() {
     }
 
@@ -59,6 +58,7 @@ public class WatchFragment extends Fragment {
                 listVideoViewModel.getApi(currentPage, requireActivity());
             }
         });
+
         return binding.getRoot();
     }
 }
