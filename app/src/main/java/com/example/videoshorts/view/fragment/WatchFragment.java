@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +22,12 @@ import com.example.videoshorts.viewModel.ListVideoViewModel;
 
 import java.util.List;
 
-public class WatchFragment extends Fragment {
+public class WatchFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private ListVideoAdapter listVideoAdapter;
     private ListVideoViewModel listVideoViewModel;
     private FragmentWatchBinding binding;
     private int currentPage = 0;
+
     public WatchFragment() {
     }
 
@@ -59,6 +62,19 @@ public class WatchFragment extends Fragment {
             }
         });
 
+        binding.srlReload.setOnRefreshListener(this);
+
         return binding.getRoot();
+    }
+
+    @Override
+    public void onRefresh() {
+        // reload list video
+        currentPage = 0;
+        listVideoViewModel.getApi(currentPage, requireActivity());
+
+        // set time delay
+        Handler handler = new Handler();
+        handler.postDelayed(() -> binding.srlReload.setRefreshing(false), 2000);
     }
 }

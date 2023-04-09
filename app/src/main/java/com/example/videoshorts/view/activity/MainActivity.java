@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         com.example.videoshorts.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
         // set color for status bar
         getWindow().setStatusBarColor(ContextCompat.getColor(MainActivity.this, R.color.black));
 
