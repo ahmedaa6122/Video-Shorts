@@ -7,7 +7,6 @@ import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Handler;
@@ -27,6 +26,7 @@ public class WatchFragment extends Fragment implements SwipeRefreshLayout.OnRefr
     private ListVideoViewModel listVideoViewModel;
     private FragmentWatchBinding binding;
     private int currentPage = 0;
+    private int refreshPageNumber = 1;
 
     public WatchFragment() {
     }
@@ -42,15 +42,14 @@ public class WatchFragment extends Fragment implements SwipeRefreshLayout.OnRefr
 
         binding = FragmentWatchBinding.inflate(inflater, container, false);
         listVideoViewModel = new ViewModelProvider(requireActivity()).get(ListVideoViewModel.class);
-        binding.rvListVideos.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // initiative value
         listVideoViewModel.getApi(currentPage, requireActivity());
-        listVideoAdapter = new ListVideoAdapter(listVideoViewModel.getVideoArrayList(), requireActivity(), getActivity());
+        listVideoAdapter = new ListVideoAdapter(requireActivity(), getActivity());
         binding.rvListVideos.setAdapter(listVideoAdapter);
 
         // observer change and handle
-        final Observer<List<Video>> observer = list -> binding.rvListVideos.setAdapter(listVideoAdapter);
+        final Observer<List<Video>> observer = videos -> listVideoAdapter.setListVideo(videos);
         listVideoViewModel.getListVideos().observe(requireActivity(), observer);
 
         // handle event when user scroll recyclerview
@@ -70,11 +69,14 @@ public class WatchFragment extends Fragment implements SwipeRefreshLayout.OnRefr
     @Override
     public void onRefresh() {
         // reload list video
-        currentPage = 0;
-        listVideoViewModel.getApi(currentPage, requireActivity());
+        listVideoAdapter.reLoadListVideo();
+        listVideoViewModel.getApi(refreshPageNumber, requireActivity());
 
         // set time delay
         Handler handler = new Handler();
         handler.postDelayed(() -> binding.srlReload.setRefreshing(false), 2000);
+
+        // increase value of refreshPageNumber
+        refreshPageNumber++;
     }
 }
