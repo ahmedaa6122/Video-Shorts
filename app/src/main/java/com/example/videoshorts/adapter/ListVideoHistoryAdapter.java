@@ -43,7 +43,7 @@ public class ListVideoHistoryAdapter extends RecyclerView.Adapter<ListVideoHisto
         VideoWatch videoWatch = arrayListWatched.get(position);
         holder.videoName.setText(videoWatch.getVideoName());
         holder.channelName.setText(videoWatch.getChannelName());
-        holder.totalView.setText(videoWatch.getTotalView() + " views");
+        holder.totalView.setText(videoWatch.getTotalView() + " lượt xem");
         Glide.with(context).load(videoWatch.getImageUrl()).into(holder.imageHistory);
         int m = Integer.parseInt(videoWatch.getTimeVideo()) / 60;
         int s = Integer.parseInt(videoWatch.getTimeVideo()) - m * 60;

@@ -56,7 +56,7 @@ public class ListVideoAdapter extends RecyclerView.Adapter<ListVideoAdapter.View
         Video video = videoList.get(position);
         holder.videoName.setText(video.getVideoTitle());
         holder.nameChannel.setText(video.getChannel().getChannelName());
-        holder.views.setText(video.getTotalViews() + " views");
+        holder.views.setText(video.getTotalViews() + " lượt xem");
         Glide.with(context).load(video.getVideoImage()).into(holder.videoImage);
         int m = Integer.parseInt(video.getVideoTime()) / 60;
         int s = Integer.parseInt(video.getVideoTime()) - m * 60;

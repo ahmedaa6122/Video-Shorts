@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">Video</string>
-    <string name="sign_in">Sign In</string>
-    <string name="sign_in_with_google">Sign in with Google</string>
-    <string name="designed_by">Designed by Pham Xuan Truong</string>
+    <string name="sign_in">Đăng nhập</string>
+    <string name="sign_in_with_google">Đăng nhập với Google</string>
+    <string name="designed_by">Thiết kế bởi Phạm Xuân Trường</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="watch">Watch</string>
-    <string name="library">Library</string>
+    <string name="watch">Trang chủ</string>
+    <string name="library">Thư viện</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -20,13 +20,13 @@
     <string name="time_start">00:00</string>
     <string name="space_2">/</string>
     <string name="time_end">4:40</string>
-    <string name="search">Search</string>
-    <string name="enter_video_name">Enter video name</string>
-    <string name="history_watch">History watched</string>
+    <string name="search">Tìm kiếm</string>
+    <string name="enter_video_name">Tìm kiếm</string>
+    <string name="history_watch">Video đã xem</string>
     <string name="separate">/</string>
-    <string name="notify_remove_success">Delete successfully</string>
-    <string name="confirm_logout">Confirm logout</string>
-    <string name="content">Are you sure you want to log out?</string>
-    <string name="cancel">Cancel</string>
-    <string name="ok">Ok</string>
+    <string name="notify_remove_success">Xóa thành công</string>
+    <string name="confirm_logout">Xác nhận đăng xuất</string>
+    <string name="content">Bạn có chắc chắn muốn đăng xuất?</string>
+    <string name="cancel">Hủy</string>
+    <string name="ok">Xác nhận</string>
 </resources>
