@@ -13,27 +13,16 @@ import com.example.videoshorts.model.Video;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ListVideoSearchViewModel extends ViewModel {
-
     private final MutableLiveData<List<Video>> listVideos = new MutableLiveData<>();
-    private final ArrayList<Video> videoArrayList = new ArrayList<>();
 
     public MutableLiveData<List<Video>> getListVideos() {
         return listVideos;
-    }
-
-    public void deleteArrayList() {
-        videoArrayList.clear();
-    }
-
-    public ArrayList<Video> getVideoArrayList() {
-        return videoArrayList;
     }
 
     public void getApi(int page, String q, Context context) {
@@ -43,18 +32,15 @@ public class ListVideoSearchViewModel extends ViewModel {
                     public void onResponse(@NonNull Call<ListVideo> call, @NonNull Response<ListVideo> response) {
                         if (response.body() != null && response.body().getListVideo() != null) {
                             listVideos.setValue(response.body().getListVideo());
-                            videoArrayList.addAll(Objects.requireNonNull(listVideos.getValue()));
                         } else {
                             listVideos.setValue(new ArrayList<>());
-                            videoArrayList.addAll(Objects.requireNonNull(listVideos.getValue()));
                         }
                     }
 
                     @Override
                     public void onFailure(@NonNull Call<ListVideo> call, @NonNull Throwable t) {
-                        Toast.makeText(context, "Search error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Lỗi khi tìm kiếm", Toast.LENGTH_SHORT).show();
                         listVideos.setValue(new ArrayList<>());
-                        videoArrayList.addAll(Objects.requireNonNull(listVideos.getValue()));
                     }
                 });
     }

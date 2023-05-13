@@ -45,7 +45,6 @@ public class DetailVideoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         // set color for status bar
         getWindow().setStatusBarColor(ContextCompat.getColor(DetailVideoActivity.this, R.color.black));
 

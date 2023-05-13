@@ -1,5 +1,6 @@
 package com.example.videoshorts.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -17,18 +18,32 @@ import com.example.videoshorts.R;
 import com.example.videoshorts.model.Video;
 import com.example.videoshorts.view.activity.DetailVideoActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ListVideoSearchAdapter extends RecyclerView.Adapter<ListVideoSearchAdapter.ViewHolder> {
-    private final List<Video> videoList;
+    private final List<Video> videoList = new ArrayList<>();
     private final Context context, getActivity;
 
-    public ListVideoSearchAdapter(List<Video> videoList, Context context, Context getActivity) {
-        this.videoList = videoList;
+    public ListVideoSearchAdapter(Context context, Context getActivity) {
         this.context = context;
         this.getActivity = getActivity;
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void addListVideo(List<Video> videoList) {
+        this.videoList.addAll(videoList);
+        notifyDataSetChanged();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void clearListVideo() {
+        if (this.videoList.size() != 0) {
+            this.videoList.clear();
+            notifyDataSetChanged();
+        }
     }
 
     @NonNull

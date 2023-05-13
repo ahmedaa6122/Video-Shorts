@@ -190,7 +190,7 @@ public class Video {
     }
 
     public String getTotalViewsString() {
-        return " - " + totalViews + " views";
+        return " - " + totalViews + " lượt xem";
     }
 
     public void setTotalViews(Integer totalViews) {

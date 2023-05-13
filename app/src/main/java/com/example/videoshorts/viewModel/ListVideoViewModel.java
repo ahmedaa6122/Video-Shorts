@@ -37,7 +37,7 @@ public class ListVideoViewModel extends ViewModel {
 
                     @Override
                     public void onFailure(@NonNull Call<ListVideo> call, @NonNull Throwable t) {
-                        Toast.makeText(context, "Video load error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Lỗi tải video", Toast.LENGTH_SHORT).show();
                         listVideos.setValue(new ArrayList<>());
                     }
                 });

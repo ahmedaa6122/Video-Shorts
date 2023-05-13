@@ -21,7 +21,6 @@
     <string name="space_2">/</string>
     <string name="time_end">4:40</string>
     <string name="search">Tìm kiếm</string>
-    <string name="enter_video_name">Tìm kiếm</string>
     <string name="history_watch">Video đã xem</string>
     <string name="separate">/</string>
     <string name="notify_remove_success">Xóa thành công</string>
@@ -29,4 +28,5 @@
     <string name="content">Bạn có chắc chắn muốn đăng xuất?</string>
     <string name="cancel">Hủy</string>
     <string name="ok">Xác nhận</string>
+    <string name="delete"><u>Xóa</u></string>
 </resources>
